@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        >
+
+<!--  Screen Title-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tenant Management System"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:background="@color/blue"
+        android:textColor="@color/white"
+        android:padding="12dp"
+
+        />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tenant Name"
+        android:textSize="12sp"
+        />
+
+
+        <EditText
+            android:id="@+id/editTenant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter Tenant Name"
+            android:minHeight="48dp"
+            android:textSize="12sp"/>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tenant Phone Number"
+            android:textSize="12sp"
+            />
+
+
+        <EditText
+            android:id="@+id/editPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter Tenant Phone"
+            android:minHeight="48dp"
+            android:textSize="12sp"/>
+
+
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+
+    <EditText
+        android:id="@+id/editRent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Enter Rent Paid"
+        android:minHeight="48dp"
+        android:textSize="12sp"/>
+    <Button
+        android:id="@+id/saveDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Details"
+        android:textSize="12sp"/>
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is where everything should appear"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"/>
+
+
+</LinearLayout>
+
