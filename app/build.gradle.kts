@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
-    id("org.jetbrains.kotlin.android") version "2.0.21"
-    id("kotlin-kapt")
+// NEW: switch Safe Args on for this app.
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -41,6 +41,8 @@ kotlin {
     }
 }
 dependencies {
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.8")
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.8")
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
