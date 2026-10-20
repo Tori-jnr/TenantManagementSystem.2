@@ -40,6 +40,23 @@ class MainActivity : AppCompatActivity() {
 // Android calls each of these automatically. We only add a log
 // line so we can watch the order in Logcat.
 // The screen is now VISIBLE
+    // ── SAVE STATE ────────────────────────────────────────────────
+// Android calls this just before destroying the Activity
+// (for example, when the phone rotates).
+// outState is the Bundle that Android keeps for us.
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onSaveInstanceState")
+// Copy into a val so Kotlin knows it can't change after the check
+        val tenant = lastTenant
+        if (tenant != null) {
+// Store each field under its own KEY.
+// onCreate() reads them back with the SAME keys.
+            outState.putString("tenant_name", tenant.name)
+            outState.putString("tenant_phone", tenant.phone)
+            outState.putString("tenant_rent", tenant.rent)
+        }
+    }
     override fun onStart() {
         super.onStart()
         Log.d("TENANT_LIFECYCLE", "MainActivity: onStart")
