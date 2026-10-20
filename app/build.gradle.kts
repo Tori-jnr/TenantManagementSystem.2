@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
 // NEW: switch Safe Args on for this app.
     id("androidx.navigation.safeargs.kotlin")
 }
