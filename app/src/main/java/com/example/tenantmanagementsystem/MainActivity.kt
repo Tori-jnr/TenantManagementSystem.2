@@ -1,5 +1,6 @@
 package com.example.tenantmanagementsystem
 
+import android.util.Log
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,6 +12,9 @@ class MainActivity : AppCompatActivity() {
     private var lastTenant: Tenant? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Write a message to Logcat every time onCreate() runs.
+        // "TENANT_LIFECYCLE" is a tag: a label we search for in Logcat.
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onCreate")
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.saveButton.setOnClickListener {
@@ -31,4 +35,39 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    // ── LIFECYCLE METHODS ─────────────────────────────────────────
+// Android calls each of these automatically. We only add a log
+// line so we can watch the order in Logcat.
+// The screen is now VISIBLE
+    override fun onStart() {
+        super.onStart()
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onStart")
+    }
+    // The screen is in FRONT and the user can interact with it
+    override fun onResume() {
+        super.onResume()
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onResume")
+    }
+    // The screen is LEAVING the front (e.g. Home was pressed)
+    override fun onPause() {
+        super.onPause()
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onPause")
+    }
+    // The screen is NO LONGER VISIBLE
+    override fun onStop() {
+        super.onStop()
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onStop")
+    }
+    // The user came BACK to a stopped screen
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onRestart")
+    }
+    // The screen is being DESTROYED
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onDestroy")
+    }
+
 }
