@@ -24,6 +24,7 @@ class ViewTenantsFragment : Fragment() {
         _binding = FragmentViewTenantBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,16 +39,17 @@ class ViewTenantsFragment : Fragment() {
                 startActivity(intent)
             }
 
-  binding.newTenantGroup.visibility = View.GONE
-        val tenants = TenantRepository.tenants
-        if (tenants.isEmpty()) {
-            binding.allTenantsTextView.text = "No tenants yet. Add one from the Dashboard."
-        } else {
-            binding.allTenantsTextView.text = tenants.joinToString("\n\n") { it.summary() }
+            binding.newTenantGroup.visibility = View.GONE
+            val tenants = TenantRepository.tenants
+            if (tenants.isEmpty()) {
+                binding.allTenantsTextView.text = "No tenants yet. Add one from the Dashboard."
+            } else {
+                binding.allTenantsTextView.text = tenants.joinToString("\n\n") { it.summary() }
+            }
         }
-    }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        override fun onDestroyView() {
+            super.onDestroyView()
+            _binding = null
+        }
     }
 }
