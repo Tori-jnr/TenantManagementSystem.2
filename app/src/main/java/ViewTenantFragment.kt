@@ -1,5 +1,8 @@
 package com.example.tenantmanagementsystem
 
+
+import android.content.Intent
+import android.net.Uri
 import androidx.navigation.fragment.navArgs
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -29,6 +32,11 @@ class ViewTenantsFragment : Fragment() {
         if (newTenant == null) {
             binding.newTenantGroup.visibility = View.GONE
         }
+        binding.callButton.setOnClickListener {
+            if (newTenant != null) {
+                val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${newTenant.phone}"))
+                startActivity(intent)
+            }
 
   binding.newTenantGroup.visibility = View.GONE
         val tenants = TenantRepository.tenants
