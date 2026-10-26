@@ -1,5 +1,9 @@
 package com.example.tenantmanagementsystem.com.example.tenantmanagementsystem
 
+import android.content.Intent
+import android.view.MenuItem
+import androidx.navigation.ui.onNavDestinationSelected
+import android.view.Menu
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -38,6 +42,23 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    // Turn main_menu.xml into menu items in the App Bar
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    // What happens when a menu item is tapped
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_logout) {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            return true
+        }
+        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+
 // ── LIFECYCLE LOGS ────────────────────────────────────────────
 // Keep your onStart(), onResume(), onPause(), onStop(),
 // onRestart() and onDestroy() methods from Practical 2, Part A here.
