@@ -22,9 +22,18 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root // hand the view to the NavHost to display
     }
+
     // The view now exists: fill in the metrics
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.addTenantButton.setOnClickListener {
+            val action = DashboardFragmentDirections.actionDashboardFragmentToAddTenantFragment()
+            findNavController().navigate(action)
+        }
+        binding.viewTenantsButton.setOnClickListener {
+            val action = DashboardFragmentDirections.actionDashboardFragmentToViewTenantsFragment()
+            findNavController().navigate(action)
+        }
 // Read from the shared list of tenants
         val tenantCount = TenantRepository.tenants.size
         val totalRent = TenantRepository.totalRent()

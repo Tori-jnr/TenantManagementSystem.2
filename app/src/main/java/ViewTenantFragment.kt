@@ -1,5 +1,6 @@
 package com.example.tenantmanagementsystem
 
+import androidx.navigation.fragment.navArgs
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.tenantmanagementsystem.databinding.FragmentViewTenantBinding
 class ViewTenantsFragment : Fragment() {
     private var _binding: FragmentViewTenantBinding? = null
     private val binding get() = _binding!!
+    private val args: ViewTenantsFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -21,8 +23,14 @@ class ViewTenantsFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-// For now, hide the "Just added" section. Practical 3 shows it when a tenant is passed in.
-        binding.newTenantGroup.visibility = View.GONE
+
+        val newTenant = args.newTenant
+        binding.tenant = newTenant
+        if (newTenant == null) {
+            binding.newTenantGroup.visibility = View.GONE
+        }
+
+  binding.newTenantGroup.visibility = View.GONE
         val tenants = TenantRepository.tenants
         if (tenants.isEmpty()) {
             binding.allTenantsTextView.text = "No tenants yet. Add one from the Dashboard."
